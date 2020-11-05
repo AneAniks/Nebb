@@ -1,0 +1,59 @@
+﻿@model IEnumerable<Nebb.Data.Models.FlightInfo>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<div class="form-group">
+    <input type="button" value="Reserve Ticket" class="btn btn-primary" onclick="window.location='@Url.Action("Create", "Tickets")'" />
+    <input type="button" value="List of Tickets" class="btn btn-primary" onclick="window.location='@Url.Action("Index", "Tickets")'" />
+    <input type="button" value="List of Passengers" class="btn btn-primary" onclick="window.location='@Url.Action("Index", "PassengerInfoes")'" />
+</div>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Origin)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Destination)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Departure)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ReturnDay)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Origin)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Destination)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Departure)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ReturnDay)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

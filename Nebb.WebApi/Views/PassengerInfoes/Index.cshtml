@@ -1,0 +1,70 @@
+﻿@model IEnumerable<Nebb.Data.Models.PassengerInfo>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.FirstName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LastName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DateOfBirth)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Passport)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LoyalMemberId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.UseLoyalMember)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.FirstName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LastName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DateOfBirth)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Passport)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LoyalMemberId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.UseLoyalMember)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+            </td>
+        </tr>
+}
+        <div class="form-group">
+    <input type="button" value="Reserver Flight" class="btn btn-primary" onclick="window.location='@Url.Action("Create", "FlightInfoes")'" />
+    <input type="button" value="List of Flights" class="btn btn-primary" onclick="window.location='@Url.Action("Index", "FlightInfoes")'" />
+</div>
+    </tbody>
+</table>
