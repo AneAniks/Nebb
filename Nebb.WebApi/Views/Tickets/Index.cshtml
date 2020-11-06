@@ -5,29 +5,19 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h1>Index</h1>
+<h1>List of Tickets</h1>
 
 <p>
-    <a asp-action="Create">Create New</a>
+    <a asp-action="Create">Create New Ticket</a>
 </p>
 <table class="table">
     <thead>
         <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.FreeCarry)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.CheckedIn)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.TrolleyBag)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Flight)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Passenger)
-            </th>
+            <th>Free carry-on bag #</th>
+            <th>Checked-in bag #</th>
+            <th>Trolley Bag#</th>
+            <th>Destination</th>
+            <th>Profile Name</th>
             <th></th>
         </tr>
     </thead>
@@ -58,3 +48,7 @@
 }
     </tbody>
 </table>
+<div class="form-group">
+    <input type="button" value="List of Passengers" class="btn btn-primary" onclick="window.location='@Url.Action("Index", "PassengerInfoes")'" />
+    <input type="button" value="List of Flights" class="btn btn-primary" onclick="window.location='@Url.Action("Index", "FlightInfoes")'" />
+</div>

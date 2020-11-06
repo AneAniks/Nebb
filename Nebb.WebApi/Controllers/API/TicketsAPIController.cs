@@ -1,9 +1,6 @@
 ﻿using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Nebb.Data.DTOs;
-using Nebb.Data.Models;
 using Nebb.Service.Services;
 
 namespace Nebb.WebApi.Controllers
@@ -12,7 +9,6 @@ namespace Nebb.WebApi.Controllers
     [ApiController]
     public class TicketsAPIController : ControllerBase
     {
-        private readonly NebbContext _context;
         private readonly ITicketService _ticketService;
 
         public TicketsAPIController(ITicketService ticketService)
@@ -29,14 +25,12 @@ namespace Nebb.WebApi.Controllers
 
         // GET: api/TicketsAPI/5
         [HttpGet("{id}")]
-        public Task<TicketDTO> GetTicket(int id)
+        public IEnumerable<TicketDTO> GetTicket(int id)
         {
             return _ticketService.GetTicket(id);
         }
 
         // PUT: api/TicketsAPI/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for
-        // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
         [HttpPut("{id}")]
         public TicketDTO PutTicket([FromRoute]int id, [FromBody]TicketDTO ticket)
         {
@@ -44,15 +38,15 @@ namespace Nebb.WebApi.Controllers
         }
 
         // POST: api/TicketsAPI
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for
-        // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
         [HttpPost]
-        public async Task<ActionResult<Ticket>> PostTicket(Ticket ticket)
+        public IActionResult PostTicket(TicketDTO ticket)
         {
-            _context.Ticket.Add(ticket);
-            await _context.SaveChangesAsync();
-
-            return CreatedAtAction("GetTicket", new { id = ticket.Id }, ticket);
+            if (ModelState.IsValid)
+            {
+                var result = _ticketService.SaveTicket(ticket);
+                return Ok(result);
+            }
+            return BadRequest(ModelState);
         }
 
         // DELETE: api/TicketsAPI/5
@@ -65,11 +59,6 @@ namespace Nebb.WebApi.Controllers
                 return Ok("Successfully deleted!");
             }
             return BadRequest("That ticked does not exist!");
-        }
-
-        private bool TicketExists(int id)
-        {
-            return _context.Ticket.Any(e => e.Id == id);
         }
     }
 }

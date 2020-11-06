@@ -5,9 +5,7 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h1>Create</h1>
-
-<h4>Ticket</h4>
+<h1>Create ticket</h1>
 <hr />
 <div class="row">
     <div class="col-md-4">
@@ -15,25 +13,23 @@
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group form-check">
                 <label class="form-check-label">
-                    <input class="form-check-input" asp-for="FreeCarry" /> @Html.DisplayNameFor(model => model.FreeCarry)
-                </label>
+                    <input class="form-check-input" asp-for="FreeCarry" />Free carry-on bag #</label>
             </div>
             <div class="form-group form-check">
                 <label class="form-check-label">
-                    <input class="form-check-input" asp-for="CheckedIn" /> @Html.DisplayNameFor(model => model.CheckedIn)
-                </label>
+                    <input class="form-check-input" asp-for="CheckedIn" />Checked-in bag #</label>
             </div>
             <div class="form-group">
-                <label asp-for="TrolleyBag" class="control-label"></label>
+                <label asp-for="TrolleyBag" class="control-label">Trolley Bag#</label>
                 <input asp-for="TrolleyBag" class="form-control" />
                 <span asp-validation-for="TrolleyBag" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="PassengerId" class="control-label"></label>
+                <label asp-for="PassengerId" class="control-label">Choose your profile</label>
                 <select asp-for="PassengerId" class ="form-control" asp-items="ViewBag.PassengerId"></select>
             </div>
             <div class="form-group">
-                <label asp-for="FlightId" class="control-label"></label>
+                <label asp-for="FlightId" class="control-label">Choose your flight</label>
                 <select asp-for="FlightId" class ="form-control" asp-items="ViewBag.FlightId"></select>
             </div>
             <div class="form-group">
@@ -42,11 +38,12 @@
         </form>
     </div>
 </div>
-
 <div>
     <a asp-action="Index">Back to List</a>
 </div>
-
-@section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
-}
+<div class="form-group">
+    <input type="button" value="Reserver Flight" class="btn btn-primary" onclick="window.location='@Url.Action("Create", "FlightInfoes")'" />
+    <input type="button" value="List of Flights" class="btn btn-primary" onclick="window.location='@Url.Action("Index", "FlightInfoes")'" />
+    <input type="button" value="Create Profile" class="btn btn-primary" onclick="window.location='@Url.Action("Create", "PassengerInfoes")'" />
+    <input type="button" value="List of Profiles" class="btn btn-primary" onclick="window.location='@Url.Action("Index", "PassengerInfoes")'" />
+</div>

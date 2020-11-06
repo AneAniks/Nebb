@@ -1,18 +1,12 @@
-﻿using System;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Metadata;
-using Nebb.Data.ViewModels;
+﻿using Microsoft.EntityFrameworkCore;
 
 namespace Nebb.Data.Models
 {
     public partial class NebbContext : DbContext
     {
-      
-
         //public NebbContext()
         //{
         //}
-
         public NebbContext(DbContextOptions<NebbContext> options)
             : base(options)
         {
@@ -21,13 +15,11 @@ namespace Nebb.Data.Models
         public virtual DbSet<FlightInfo> FlightInfo { get; set; }
         public virtual DbSet<PassengerInfo> PassengerInfo { get; set; }
         public virtual DbSet<Ticket> Ticket { get; set; }
-        public virtual DbSet<TicketAViewModel> TicketAViewModel { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             if (!optionsBuilder.IsConfigured)
             {
-#warning To protect potentially sensitive information in your connection string, you should move it out of source code. See http://go.microsoft.com/fwlink/?LinkId=723263 for guidance on storing connection strings.
                 optionsBuilder.UseSqlServer("Data Source=localhost,1432;Initial Catalog=Nebb;Persist Security Info=True;User ID=sa;Password=!2E45678");
             }
         }
@@ -95,27 +87,24 @@ namespace Nebb.Data.Models
                     .HasConstraintName("FK_PassengerInfo");
             });
 
-            modelBuilder.Entity<TicketAViewModel>().HasData(
-                new TicketAViewModel
-                {
-                    Id = 5,
-                    FirstName = "Predrag",
-                    LastName = "Nikolic",
-                    DateOfBirth = new DateTime(1999, 01, 17),
-                    Passport = "JKDAUYJDAKD",
-                    Origin = "Skopje",
-                    Destination = "Hawaii",
-                    Departure = new DateTime(2020, 11, 17),
-                    ReturnDay = new DateTime(2020, 12, 17),
-                    FreeCarry = true,
-                    CheckedIn = false,
-                    TrolleyBag = false
-                });
-            
-
-            OnModelCreatingPartial(modelBuilder);
+            //modelBuilder.Entity<TicketAViewModel>().HasData(
+            //    new TicketAViewModel
+            //    {
+            //        Id = 5,
+            //        FirstName = "Predrag",
+            //        LastName = "Nikolic",
+            //        DateOfBirth = new DateTime(1999, 01, 17),
+            //        Passport = "JKDAUYJDAKD",
+            //        Origin = "Skopje",
+            //        Destination = "Hawaii",
+            //        Departure = new DateTime(2020, 11, 17),
+            //        ReturnDay = new DateTime(2020, 12, 17),
+            //        FreeCarry = true,
+            //        CheckedIn = false,
+            //        TrolleyBag = false
+            //    });
+          //  OnModelCreatingPartial(modelBuilder);
         }
-
-        partial void OnModelCreatingPartial(ModelBuilder modelBuilder);
+      //  partial void OnModelCreatingPartial(ModelBuilder modelBuilder);
     }
 }

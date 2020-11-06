@@ -1,36 +1,20 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Nebb.Data.Models;
-using Nebb.Data.ViewModels;
-using Nebb.Service.Services;
 
 namespace Nebb.WebApi.Controllers
 {
     public class TicketsController : Controller
     {
         private readonly NebbContext _context;
-        //private readonly ITicketService _ticketService;
-        //  public Ticket Ticket { get; set; }
 
         public TicketsController(NebbContext context)
         {
             _context = context;
         }
-        //public TicketsController(ITicketService ticketService)
-        //{
-        //    this._ticketService = ticketService;
-        //}
-
-        //public IActionResult OnGet(int id) 
-        //{
-        //    Ticket = _ticketService.GetTicket2(id);
-        //    return View();
-        //}
 
       //  GET: Tickets
         public async Task<IActionResult> Index()
@@ -68,8 +52,6 @@ namespace Nebb.WebApi.Controllers
         }
 
         // POST: Tickets/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
-        // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("Id,FreeCarry,CheckedIn,TrolleyBag,PassengerId,FlightId")] Ticket ticket)
@@ -84,20 +66,6 @@ namespace Nebb.WebApi.Controllers
             ViewData["PassengerId"] = new SelectList(_context.PassengerInfo, "Id", "FirstName", ticket.PassengerId);
             return View(ticket);
         }
-        //[HttpPost]
-        //[ValidateAntiForgeryToken]
-        //public async Task<IActionResult> Create([Bind("FirstName,LastName,DateOfBirth,Passport,Origin,Destination,Departure,ReturnDay,FreeCarry,CheckedIn,TrolleyBag")] TicketAViewModel ticketA)
-        //{
-        //    if (ModelState.IsValid)
-        //    {
-        //        _context.Add(ticketA);
-        //        await _context.SaveChangesAsync();
-        //        return RedirectToAction(nameof(Index));
-        //    }
-        //   // ViewData["FlightId"] = new SelectList(_context.FlightInfo, "Id", "Destination", ticket.FlightId);
-        //   // ViewData["PassengerId"] = new SelectList(_context.PassengerInfo, "Id", "FirstName", ticket.PassengerId);
-        //    return View(ticketA);
-        //}
 
         // GET: Tickets/Edit/5
         public async Task<IActionResult> Edit(int? id)
@@ -118,8 +86,6 @@ namespace Nebb.WebApi.Controllers
         }
 
         // POST: Tickets/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
-        // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("Id,FreeCarry,CheckedIn,TrolleyBag,PassengerId,FlightId")] Ticket ticket)

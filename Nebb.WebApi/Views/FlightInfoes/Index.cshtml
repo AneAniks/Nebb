@@ -5,13 +5,12 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h1>Index</h1>
+<h1>Flight List</h1>
 
 <p>
-    <a asp-action="Create">Create New</a>
+    <a asp-action="Create">Create New Flight</a>
 </p>
 <div class="form-group">
-    <input type="button" value="Reserve Ticket" class="btn btn-primary" onclick="window.location='@Url.Action("Create", "Tickets")'" />
     <input type="button" value="List of Tickets" class="btn btn-primary" onclick="window.location='@Url.Action("Index", "Tickets")'" />
     <input type="button" value="List of Passengers" class="btn btn-primary" onclick="window.location='@Url.Action("Index", "PassengerInfoes")'" />
 </div>

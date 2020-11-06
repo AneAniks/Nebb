@@ -5,45 +5,32 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h1>Details</h1>
+<h1>Passenger Informations</h1>
 
 <div>
-    <h4>PassengerInfo</h4>
     <hr />
     <dl class="row">
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.FirstName)
-        </dt>
+        <dt class = "col-sm-2">First Name</dt>
         <dd class = "col-sm-10">
             @Html.DisplayFor(model => model.FirstName)
         </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.LastName)
-        </dt>
+        <dt class = "col-sm-2">Last Name</dt>
         <dd class = "col-sm-10">
             @Html.DisplayFor(model => model.LastName)
         </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.DateOfBirth)
-        </dt>
+        <dt class = "col-sm-2">Date of Birth</dt>
         <dd class = "col-sm-10">
             @Html.DisplayFor(model => model.DateOfBirth)
         </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Passport)
-        </dt>
+        <dt class = "col-sm-2">Passport Number</dt>
         <dd class = "col-sm-10">
             @Html.DisplayFor(model => model.Passport)
         </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.LoyalMemberId)
-        </dt>
+        <dt class = "col-sm-2">Loyal Member ID:</dt>
         <dd class = "col-sm-10">
             @Html.DisplayFor(model => model.LoyalMemberId)
         </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.UseLoyalMember)
-        </dt>
+        <dt class = "col-sm-2">Using loyal member credits?</dt>
         <dd class = "col-sm-10">
             @Html.DisplayFor(model => model.UseLoyalMember)
         </dd>

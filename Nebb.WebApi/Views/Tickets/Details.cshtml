@@ -5,39 +5,29 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h1>Details</h1>
+<h1>Details for ticket</h1>
 
 <div>
     <h4>Ticket</h4>
     <hr />
     <dl class="row">
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.FreeCarry)
-        </dt>
+        <dt class="col-sm-2">Free carry-on bag #</dt>
         <dd class = "col-sm-10">
             @Html.DisplayFor(model => model.FreeCarry)
         </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.CheckedIn)
-        </dt>
+        <dt class="col-sm-2">Checked-in bag #</dt>
         <dd class = "col-sm-10">
             @Html.DisplayFor(model => model.CheckedIn)
         </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.TrolleyBag)
-        </dt>
+        <dt class="col-sm-2">Trolley Bag#</dt>
         <dd class = "col-sm-10">
             @Html.DisplayFor(model => model.TrolleyBag)
         </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Flight)
-        </dt>
+        <dt class = "col-sm-2">Destination</dt>
         <dd class = "col-sm-10">
             @Html.DisplayFor(model => model.Flight.Destination)
         </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Passenger)
-        </dt>
+        <dt class = "col-sm-2">Profile Name</dt>
         <dd class = "col-sm-10">
             @Html.DisplayFor(model => model.Passenger.FirstName)
         </dd>
@@ -46,4 +36,9 @@
 <div>
     <a asp-action="Edit" asp-route-id="@Model.Id">Edit</a> |
     <a asp-action="Index">Back to List</a>
+</div>
+
+<div class="form-group">
+    <input type="button" value="List of Passengers" class="btn btn-primary" onclick="window.location='@Url.Action("Index", "PassengerInfoes")'" />
+    <input type="button" value="List of Flights" class="btn btn-primary" onclick="window.location='@Url.Action("Index", "FlightInfoes")'" />
 </div>

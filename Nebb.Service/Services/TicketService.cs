@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 using AutoMapper;
 using Microsoft.EntityFrameworkCore;
 using Nebb.Data.DTOs;
@@ -13,8 +12,7 @@ namespace Nebb.Service.Services
     {
         private readonly IMapper _mapper;
         private readonly NebbContext _nebbContext;
-        readonly List<Ticket> ticket;
-
+        
         public TicketService(NebbContext nebbContext, IMapper mapper)
         {
             _nebbContext = nebbContext;
@@ -24,7 +22,7 @@ namespace Nebb.Service.Services
         {
             return _nebbContext.Ticket
                  .Include(t => t.Passenger)
-                 .Include(t => t.Flight)
+                // .Include(t => t.Flight)
                  .AsEnumerable()
                  .Select(t => new TicketDTO()
                  {
@@ -53,12 +51,12 @@ namespace Nebb.Service.Services
             //     },
             // }).ToList();
         }
-
-        public Ticket GetTicket2(int id)
+        public IEnumerable<TicketDTO> GetTicket(int id)
         {
-           // ticket = _nebbContext.Ticket.FirstOrDefaultAsync(x => x.Id == id);
-            return ticket.SingleOrDefault(i => i.Id == id);
+            var ticket = _nebbContext.Ticket.Where(x => x.Id == id);
+            return _mapper.Map<IEnumerable<TicketDTO>>(ticket);
         }
+
         public TicketDTO SaveTicket(TicketDTO ticket)
         {
             Ticket newTicket = _mapper.Map<Ticket>(ticket);
@@ -96,11 +94,6 @@ namespace Nebb.Service.Services
             _nebbContext.Ticket.Remove(ticket);
             _nebbContext.SaveChanges();
             return true;
-        }
-
-        public Task<TicketDTO> GetTicket(int id)
-        {
-            throw new NotImplementedException();
         }
     }
 }

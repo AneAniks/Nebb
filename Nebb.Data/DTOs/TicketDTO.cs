@@ -1,7 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Text;
 using Nebb.Data.Validators;
 
 namespace Nebb.Data.DTOs
