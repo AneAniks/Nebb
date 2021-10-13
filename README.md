@@ -5,12 +5,13 @@ Development of a centralized library management system
 
 ### Database:
 The Library database schema:
+
     •Library
-    •Publisher
-    •Book
-    •BookCopies
+	•Publisher
+	•Book
+	•BookCopies
     •Client
-    •Lending
+	•Lending 
 
 Library and Publisher are known as base tables, since they contain column definition and data for the actual entities in the relational model. 
 Book, BookCopies, Client and Lending are known as the relationship tables, since this tables defines the relationship between them.
