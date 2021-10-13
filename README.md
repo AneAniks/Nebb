@@ -1,8 +1,31 @@
-# Nebb
-## Four Solutions Coding Assignment
+# Library Management System
+### Coding Assignment
 
-### Database Diagaram
-![Database Diagaram](https://github.com/AneAniks/Nebb/blob/master/Nebb.WebApi/diagram.png?raw=true)
+Development of a centralized library management system
+
+### Database!
+The Library database schema:
+    •Library
+    •Publisher
+    •Book
+    •BookCopies
+    •Client
+    •Lending
+
+Library and Publisher are known as base tables, since they contain column definition and data for the actual entities in the relational model. 
+Book, BookCopies, Client and Lending are known as the relationship tables, since this tables defines the relationship between them.
+![unknown](https://user-images.githubusercontent.com/47063623/137093046-520e4403-3034-4178-99f2-d21d5a6709c0.png)
+
+     
+### Forms!
+All Forms contains Create/Edit/Delete/List properties. 
+It also contains display validation messages for every property.
+
+List of borrowed books [ NOT Returned ]
+[slika]
+
+List of borrowed books [ Returned ]
+[slika]
 
 # Authors
-* Ana Marija Petrusevska
+* Predrag Nikolikj    
