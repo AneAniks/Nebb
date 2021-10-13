@@ -3,7 +3,7 @@
 
 Development of a centralized library management system
 
-### Database!
+### Database:
 The Library database schema:
     •Library
     •Publisher
@@ -18,7 +18,7 @@ Book, BookCopies, Client and Lending are known as the relationship tables, since
 ![unknown](https://user-images.githubusercontent.com/47063623/137093046-520e4403-3034-4178-99f2-d21d5a6709c0.png)
 
      
-### Forms!
+### Forms:
 All Forms contains Create/Edit/Delete/List properties. 
 It also contains display validation messages for every property.
 
